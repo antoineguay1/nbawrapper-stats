@@ -1,28 +1,30 @@
 # nbawrapper-stats
 Java wrapper for NBA player/team stats and even more!
-## Getting a player's statistics
+## Getting a player's profile
+The Player object contains contains all the player's general information about his draft, height, weight, stats, etc. It also contains the player's headshot image.
 ### Using keywords
-To get a player's complete statistics using keywords to search him, you can use the static method getPlayerByNameKeywords of the Player class.
+To get a player's complete profile using keywords to search him, you can use the static method getPlayerByNameKeywords of the Player class.
 ```java
 Player player = Player.getPlayerByNameKeywords("westbrook");
 System.out.println(player.getFirstName()); // Russell
 System.out.println(player.getFirstName()); // Westbrook
 ```
 ### Using the player ID
-To get a player's complete statistics using his ID, you can use the static method getPlayerById of the Player class.
+To get a player's complete profile using his ID, you can use the static method getPlayerById of the Player class.
 ```java
 Player player = Player.getPlayerById("203471");
 System.out.println(player.getFirstName()); // Dennis
 System.out.println(player.getFirstName()); // Schroder
 ```
 ### Get player's short profile
-You can also get a player's minimal informations, useful when displaying a roster for instance, using the static method getPlayerMinById of the Player class.
+You can also get a player's minimal profile, useful when displaying a roster for instance, using the static method getPlayerMinById of the Player class.
 ```java
 PlayerMin playerMin = Player.getPlayerMinById("203471");
 System.out.println(playerMin.getFirstName()); // Dennis
 System.out.println(playerMin.getFirstName()); // Schroder
 ```
 ## Getting a team's profile
+The Team object contains a team's roster, stats leaders, games this season as well as the url to its logo image. It also contains general information.
 ### Using keywords
 To get a team's complete profile using keywords to search it, you can use the static method getTeamByNameKeywords of the Team class.
 ```java
