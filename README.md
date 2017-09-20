@@ -59,7 +59,7 @@ Scoreboard scoreboard = League.getScoreboard(25, 12, 2016);
 List<GameDetails> gameList = scoreboard.getGames();
 ```
 ## Getting a boxscore
-### Using a date and a gameId
+### Using a date and a game ID
 You can get the boxscore of a certain game using the static method getBoxscore of League. For instance, to get the boxscore of the game between the Cavaliers and the Warriors on December 25th 2016, you can use this snippet of code
 ```java
 Boxscore boxscore = League.getBoxscore(25, 12, 2016, "0021600457");
