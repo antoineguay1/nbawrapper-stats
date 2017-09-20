@@ -20,7 +20,7 @@
 	</licenses>
 	
 	<scm>
-		<url>https://github.com/antoineguay1/nbawrapper-stats.git</url>
+		<url>https://github.com/antoineguay1/nbawrapper-stats</url>
 		<connection>https://github.com/antoineguay1/nbawrapper-stats.git</connection>
 		<developerConnection>https://github.com/antoineguay1/nbawrapper-stats.git</developerConnection>
 	</scm>
