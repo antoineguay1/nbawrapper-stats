@@ -9,7 +9,7 @@
 
 	<name>nbawrapper</name>
 	<description>Java NBA stats wrapper</description>
-	<url>http://maven.apache.org</url>
+	<url>http://antoineguay.com</url>
 
 	<licenses>
 		<license>
@@ -31,6 +31,9 @@
 		<developer>
 			<id>aguay</id>
 			<name>Antoine Guay</name>
+			<email>antoine.guay@bell.net</email>
+			<organization>Antoine Guay</organization>
+			<organizationUrl>http://antoineguay.com</organizationUrl>
 			<roles>
 				<role>Project lead</role>
 				<role>Software Architect</role>
