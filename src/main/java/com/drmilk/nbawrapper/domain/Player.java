@@ -2,8 +2,6 @@ package com.drmilk.nbawrapper.domain;
 
 import java.awt.Image;
 import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.imageio.ImageIO;
 
@@ -71,7 +69,7 @@ public class Player {
 	 * @param personId
 	 * @throws PlayerNotFoundException 
 	 */
-	public Player(String personId) throws PlayerNotFoundException {
+	private Player(String personId) throws PlayerNotFoundException {
 		try {
 			HttpResponse leaguePlayersResponse = QueryManager.getHttpResponse(sourceBaseUrl + "/" + currentSeason + "/players.json");
 			LeaguePlayersResponse leaguePlayers = objectMapper.readValue(leaguePlayersResponse.getEntity().getContent(), LeaguePlayersResponse.class);
@@ -101,7 +99,7 @@ public class Player {
 	 * @param standard
 	 * @throws PlayerNotFoundException
 	 */
-	public Player(String personId, LeaguePlayer standard) throws PlayerNotFoundException {
+	private Player(String personId, LeaguePlayer standard) throws PlayerNotFoundException {
 		try {
 			this.retreiveFromStandardLeagueLeaders(standard);
 			
@@ -122,20 +120,20 @@ public class Player {
 	 * Returns the short profile of a player from his personId
 	 * 
 	 * @param personId
-	 * @return A map with four keys: "firstName", "lastName", "headshotUrl" and "jersey".
+	 * @return A PlayerMin object containing firstName, lastName, headshotUrl and jersey of a player.
 	 * @throws PlayerNotFoundException
 	 */
-	public static Map<String, String> getShortProfileByPersonId(String personId) throws PlayerNotFoundException {
+	public static PlayerMin getPlayerMinById(String personId) throws PlayerNotFoundException {
+		PlayerMin result = new PlayerMin();
 		try {
-			Map<String, String> result = new HashMap<>();
-			result.put("headshotUrl", HEADSHOT_BASE_URL + personId + HEADSHOT_END_URL);
+			result.setHeadshotUrl(HEADSHOT_BASE_URL + personId + HEADSHOT_END_URL);
 			HttpResponse leaguePlayersResponse = QueryManager.getHttpResponse(sourceBaseUrl + "/" + currentSeason + "/players.json");
 			LeaguePlayersResponse leaguePlayers = objectMapper.readValue(leaguePlayersResponse.getEntity().getContent(), LeaguePlayersResponse.class);
 			for (LeaguePlayer standard : leaguePlayers.getLeague().getStandard()) {
 				if (standard.getPersonId().equals(personId)) {
-					result.put("firstName", standard.getFirstName());
-					result.put("lastName", standard.getLastName());
-					result.put("jersey", standard.getJersey());
+					result.setFirstName(standard.getFirstName());
+					result.setLastName(standard.getLastName());
+					result.setJersey(standard.getJersey());
 					return result;
 				}
 			}
@@ -145,7 +143,21 @@ public class Player {
 		throw new PlayerNotFoundException("Could not find a player with personId " + "'" + personId + "'");
 	}
 	
-	public static Player searchPlayer(String playerKeywords) throws PlayerNotFoundException {
+	/**
+	 * @param personId
+	 * @return A player found using his personId
+	 * @throws PlayerNotFoundException
+	 */
+	public static Player getPlayerById(String personId) throws PlayerNotFoundException {
+		return new Player(personId);
+	}
+	
+	/**
+	 * @param playerNameKeywords
+	 * @return A player found using keywords about his name
+	 * @throws PlayerNotFoundException
+	 */
+	public static Player getPlayerByNameKeywords(String playerNameKeywords) throws PlayerNotFoundException {
 		try {
 			String personId = null;
 			LeaguePlayer leaguePlayer = null;
@@ -156,7 +168,7 @@ public class Player {
 			
 			for (LeaguePlayer standard : leaguePlayers.getLeague().getStandard()) {
 				String fullName = standard.getFirstName() + " " + standard.getLastName();
-				Double currentSimilarity = algorithm.distance(fullName.toLowerCase(), playerKeywords.toLowerCase());
+				Double currentSimilarity = algorithm.distance(fullName.toLowerCase(), playerNameKeywords.toLowerCase());
 				if (currentSimilarity < bestSimilarity) {
 					bestSimilarity = currentSimilarity;
 					personId = standard.getPersonId();
@@ -165,11 +177,11 @@ public class Player {
 			}
 			
 			if (personId == null) {
-				throw new PlayerNotFoundException("Could not find a player using keywords " + "'" + playerKeywords + "'");
+				throw new PlayerNotFoundException("Could not find a player using keywords " + "'" + playerNameKeywords + "'");
 			}
 			return new Player(personId, leaguePlayer);
 		} catch (Exception e) {
-			throw new PlayerNotFoundException("Could not find a player using keywords " + "'" + playerKeywords + "'");
+			throw new PlayerNotFoundException("Could not find a player using keywords " + "'" + playerNameKeywords + "'");
 		}
 	}
 

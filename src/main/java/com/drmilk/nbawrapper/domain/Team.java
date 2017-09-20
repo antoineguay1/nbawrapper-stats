@@ -1,9 +1,7 @@
 package com.drmilk.nbawrapper.domain;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.http.HttpResponse;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -21,6 +19,8 @@ import com.drmilk.nbawrapper.domain.utils.team.TeamSummaryResponse;
 import com.drmilk.nbawrapper.exception.TeamNotFoundException;
 import com.drmilk.nbawrapper.utils.QueryManager;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import info.debatty.java.stringsimilarity.Cosine;
 
 /**
  * Object representation of a NBA team.
@@ -53,7 +53,7 @@ public class Team {
 	 * @param teamId
 	 * @throws TeamNotFoundException
 	 */
-	public Team(String teamId) throws TeamNotFoundException {
+	private Team(String teamId) throws TeamNotFoundException {
 		try {
 			HttpResponse teamSummaryResponse = QueryManager.getHttpResponse(sourceBaseUrl + "/" + currentSeason + "/teams.json");
 			TeamSummaryResponse teamSummaries = objectMapper.readValue(teamSummaryResponse.getEntity().getContent(), TeamSummaryResponse.class);
@@ -89,25 +89,65 @@ public class Team {
 	 * Returns the short profile of a team from its teamId
 	 * 
 	 * @param teamId
-	 * @return A map with three keys: "logoUrl", "fullName" and "triCode".
+	 * @return A TeamMin containing logoUrl, fullName and triCode.
 	 * @throws TeamNotFoundException
 	 */
-	public static Map<String, String> getShortProfileByTeamId(String teamId) throws TeamNotFoundException {
+	public static TeamMin getShortProfileByTeamId(String teamId) throws TeamNotFoundException {
 		try {
-			Map<String, String> result = new HashMap<>();
+			TeamMin result = new TeamMin();
 			HttpResponse teamSummaryResponse = QueryManager.getHttpResponse(sourceBaseUrl + "/" + currentSeason + "/teams.json");
 			TeamSummaryResponse teamSummaries = objectMapper.readValue(teamSummaryResponse.getEntity().getContent(), TeamSummaryResponse.class);
 			for (TeamSummary teamSummary: teamSummaries.getLeague().getStandard()) {
 				if (teamSummary.getTeamId().equals(teamId)) {
-					result.put("logoUrl", LOGO_BASE_URL + teamSummary.getTricode() + LOGO_END_URL);
-					result.put("fullName", teamSummary.getFullName());
-					result.put("triCode", teamSummary.getTricode());
+					result.setLogoUrl(LOGO_BASE_URL + teamSummary.getTricode() + LOGO_END_URL);
+					result.setFullName(teamSummary.getFullName());
+					result.setTriCode(teamSummary.getTricode());
 					break;
 				}
 			}
 			return result;
 		} catch (Exception e) {
 			throw new TeamNotFoundException("Could not find a team with teamId " + "'" + teamId + "'");
+		}
+	}
+	
+	/**
+	 * @param teamId
+	 * @return A team found using its teamId
+	 * @throws TeamNotFoundException
+	 */
+	public static Team getTeamById(String teamId) throws TeamNotFoundException {
+		return new Team(teamId);
+	}
+	
+	/**
+	 * @param teamNameKeywords
+	 * @return A team found using keywords of its name
+	 * @throws TeamNotFoundException
+	 */
+	public static Team getTeamByNameKeywords(String teamNameKeywords) throws TeamNotFoundException {
+		try {
+			String teamId = null;
+			Double bestSimilarity = 1.0; // better if closer to 0
+			Cosine  algorithm = new Cosine();
+			HttpResponse leagueTeamsResponse = QueryManager.getHttpResponse(sourceBaseUrl + "/" + currentSeason + "/teams.json");
+			TeamSummaryResponse teamSummaries = objectMapper.readValue(leagueTeamsResponse.getEntity().getContent(), TeamSummaryResponse.class);
+			
+			for (TeamSummary teamSummary : teamSummaries.getLeague().getStandard()) {
+				String fullName = teamSummary.getFullName();
+				Double currentSimilarity = algorithm.distance(fullName.toLowerCase(), teamNameKeywords.toLowerCase());
+				if (currentSimilarity < bestSimilarity) {
+					bestSimilarity = currentSimilarity;
+					teamId = teamSummary.getTeamId();
+				}
+			}
+			
+			if (teamId == null) {
+				throw new TeamNotFoundException("Could not find a team using keywords " + "'" + teamNameKeywords + "'");
+			}
+			return new Team(teamId);
+		} catch (Exception e) {
+			throw new TeamNotFoundException("Could not find a team using keywords " + "'" + teamNameKeywords + "'");
 		}
 	}
 	
