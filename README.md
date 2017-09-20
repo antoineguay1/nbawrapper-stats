@@ -56,5 +56,5 @@ You can get the scoreboard of a certain date using the static method getScoreboa
 ```java
 Scoreboard scoreboard = League.getScoreboard(25, 12, 2016);
 // From this scoreboard, you can access different information
-List<GameDetails> gameList = league.getGames();
+List<GameDetails> gameList = scoreboard.getGames();
 ```
