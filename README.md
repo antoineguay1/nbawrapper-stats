@@ -1,5 +1,5 @@
 # nbawrapper-stats
-Wrapper for NBA player/team stats and even more!
+Java wrapper for NBA player/team stats and even more!
 ## Getting a player's statistics
 ### Using keywords
 To get a player's complete statistics using keywords to search him, you can use the static method getPlayerByNameKeywords of the Player class.
