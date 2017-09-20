@@ -1,5 +1,5 @@
 # nbawrapper-stats
-Java wrapper for NBA player/team stats and even more!
+Java wrapper for NBA player/team/league stats and even more!
 ## Getting a player's profile
 The Player object contains contains all the player's general information about his draft, height, weight, stats, etc. It also contains the player's headshot image.
 ### Using keywords
@@ -49,4 +49,12 @@ You can also get a team's minimal profile, useful when displaying a list of team
 TeamMin teamMin = Team.getShortProfileByTeamId("1610612737");
 System.out.println(teamMin.getCity()); // Atlanta
 System.out.println(teamMin.getFullName()); // Atlanta Hawks
+```
+## Getting a scoreboard
+### Using a date
+You can get the scoreboard of a certain date using the static method getScoreboard of League. For instance, to get the scoreboard on December 25th 2016, you can use this snippet of code
+```java
+Scoreboard scoreboard = League.getScoreboard(25, 12, 2016);
+// From this scoreboard, you can access different information
+List<GameDetails> gameList = league.getGames();
 ```
