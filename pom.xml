@@ -3,7 +3,7 @@
 
 	<groupId>com.antoineguay</groupId>
 	<artifactId>nbawrapper</artifactId>
-	<version>0.0.1</version>
+	<version>0.0.3</version>
 	<packaging>jar</packaging>
 
 	<name>nbawrapper</name>
@@ -21,17 +21,18 @@
 		<url>https://github.com/antoineguay1/nbawrapper-stats</url>
 		<connection>scm:git:git@github.com:antoineguay1/nbawrapper-stats.git</connection>
 		<developerConnection>scm:git:git@github.com:antoineguay1/nbawrapper-stats.git</developerConnection>
-	</scm>
+	  <tag>nbawrapper-0.0.1</tag>
+  </scm>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
-	<parent>
-		<groupId>org.sonatype.oss</groupId>
-		<artifactId>oss-parent</artifactId>
-		<version>9</version>
-	</parent>
+<!--  	<parent> -->
+<!--  		<groupId>org.sonatype.oss</groupId> -->
+<!--  		<artifactId>oss-parent</artifactId> -->
+<!--  		<version>9</version> -->
+<!--  	</parent> -->
 
 	<developers>
 		<developer>
@@ -117,8 +118,8 @@
 				<configuration>
 					<serverId>ossrh</serverId>
 					<nexusUrl>https://oss.sonatype.org/</nexusUrl>
-					<description>
-						${project.version}</description>
+					<description>${project.version}</description>
+					<autoReleaseAfterClose>true</autoReleaseAfterClose>
 				</configuration>
 				<executions>
 					<execution>
@@ -131,17 +132,6 @@
 					</execution>
 				</executions>
 			</plugin>
-			<!-- <plugin> -->
-			<!-- <groupId>org.sonatype.plugins</groupId> -->
-			<!-- <artifactId>nexus-staging-maven-plugin</artifactId> -->
-			<!-- <version>1.6.7</version> -->
-			<!-- <extensions>true</extensions> -->
-			<!-- <configuration> -->
-			<!-- <serverId>ossrh</serverId> -->
-			<!-- <nexusUrl>https://oss.sonatype.org/</nexusUrl> -->
-			<!-- <autoReleaseAfterClose>true</autoReleaseAfterClose> -->
-			<!-- </configuration> -->
-			<!-- </plugin> -->
 		</plugins>
 	</build>
 
