@@ -3,7 +3,7 @@
 
 	<groupId>com.antoineguay</groupId>
 	<artifactId>nbawrapper</artifactId>
-	<version>0.0.3</version>
+	<version>0.0.5</version>
 	<packaging>jar</packaging>
 
 	<name>nbawrapper</name>
@@ -28,11 +28,11 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
-<!--  	<parent> -->
-<!--  		<groupId>org.sonatype.oss</groupId> -->
-<!--  		<artifactId>oss-parent</artifactId> -->
-<!--  		<version>9</version> -->
-<!--  	</parent> -->
+ 	<parent>
+ 		<groupId>org.sonatype.oss</groupId>
+ 		<artifactId>oss-parent</artifactId>
+ 		<version>9</version>
+ 	</parent>
 
 	<developers>
 		<developer>
