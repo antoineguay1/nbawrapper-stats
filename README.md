@@ -1,4 +1,7 @@
 # nbawrapper-stats
+
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.antoineguay/nbawrapper/badge.svg?style=flat)](https://maven-badges.herokuapp.com/maven-central/com.antoineguay/nbawrapper/)
+
 Java wrapper for NBA player/team/league stats and even more!
 ## Installing
 ### Using Maven
@@ -6,7 +9,7 @@ Java wrapper for NBA player/team/league stats and even more!
 <dependency>
     <groupId>com.antoineguay</groupId>
     <artifactId>nbawrapper</artifactId>
-    <version>0.0.2</version>
+    <version>0.0.6</version>
 </dependency>
 ```
 ## Getting a player's profile
