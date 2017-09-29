@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="5" failures="0" name="com.drmilk.nbawrapper.domain.PlayerTest" time="2.779" errors="0" skipped="0">
+<testsuite tests="5" failures="0" name="com.drmilk.nbawrapper.domain.PlayerTest" time="2.496" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files (x86)\Java\jdk1.8.0_131\jre\bin"/>
@@ -63,9 +63,9 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
   </properties>
-  <testcase classname="com.drmilk.nbawrapper.domain.PlayerTest" name="testSearchLebronJames" time="0.989"/>
-  <testcase classname="com.drmilk.nbawrapper.domain.PlayerTest" name="testGetDennisSchroderShortProfileFromPersonId" time="0.387"/>
-  <testcase classname="com.drmilk.nbawrapper.domain.PlayerTest" name="testGetDennisSchroderFromPersonId" time="0.573"/>
-  <testcase classname="com.drmilk.nbawrapper.domain.PlayerTest" name="testSearchRussellWestbrook" time="0.486"/>
-  <testcase classname="com.drmilk.nbawrapper.domain.PlayerTest" name="testGetPlayerFromInvalidPersonId" time="0.344"/>
+  <testcase classname="com.drmilk.nbawrapper.domain.PlayerTest" name="testGetPlayerFromInvalidPersonId" time="0.515"/>
+  <testcase classname="com.drmilk.nbawrapper.domain.PlayerTest" name="testSearchRussellWestbrook" time="0.878"/>
+  <testcase classname="com.drmilk.nbawrapper.domain.PlayerTest" name="testGetDennisSchroderShortProfileFromPersonId" time="0.266"/>
+  <testcase classname="com.drmilk.nbawrapper.domain.PlayerTest" name="testGetDennisSchroderFromPersonId" time="0.4"/>
+  <testcase classname="com.drmilk.nbawrapper.domain.PlayerTest" name="testSearchLebronJames" time="0.437"/>
 </testsuite>
