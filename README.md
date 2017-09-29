@@ -1,5 +1,14 @@
 # nbawrapper-stats
 Java wrapper for NBA player/team/league stats and even more!
+## Installing
+### Using Maven
+```xml
+<dependency>
+    <groupId>com.antoineguay</groupId>
+    <artifactId>nbawrapper</artifactId>
+    <version>0.0.2</version>
+</dependency>
+```
 ## Getting a player's profile
 The Player object contains contains all the player's general information about his draft, height, weight, stats, etc. It also contains the player's headshot image.
 ### Using keywords
