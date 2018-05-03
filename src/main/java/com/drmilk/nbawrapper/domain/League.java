@@ -25,7 +25,7 @@ public class League {
 
 	private static ObjectMapper objectMapper = (ObjectMapper) context.getBean("objectMapper");
 
-	public static Scoreboard getScoreboard(Integer day, Integer month, Integer year)
+	public static Scoreboard getScoreboard(String day, String month, String year)
 			throws ScoreboardNotFoundException {
 		try {
 			HttpResponse scoreboardResponse = QueryManager.getHttpResponse(

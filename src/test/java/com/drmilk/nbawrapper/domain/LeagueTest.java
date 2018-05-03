@@ -14,7 +14,7 @@ import junit.framework.TestCase;
 public class LeagueTest extends TestCase {
 
 	public void testGetValidScoreboard() throws ScoreboardNotFoundException {
-		Scoreboard league = League.getScoreboard(25, 12, 2016);
+		Scoreboard league = League.getScoreboard("25", "12", "2016");
 		Assert.assertNotNull(league);
 		List<GameDetails> gameList = league.getGames();
 		Assert.assertEquals(5, gameList.size());
