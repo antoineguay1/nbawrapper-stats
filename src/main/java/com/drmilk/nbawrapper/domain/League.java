@@ -37,7 +37,7 @@ public class League {
 		}
 	}
 
-	public static Boxscore getBoxscore(Integer day, Integer month, Integer year, String gameId) throws BoxscoreNotFoundException {
+	public static Boxscore getBoxscore(String day, String month, String year, String gameId) throws BoxscoreNotFoundException {
 		try {
 			HttpResponse boxscoreResponse = QueryManager.getHttpResponse(
 					sourceBaseUrl + "/" + year.toString() + month.toString() + day.toString() + "/" + gameId + "_boxscore.json");

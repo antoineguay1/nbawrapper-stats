@@ -37,3 +37,4 @@ pom.xml.releaseBackup
 .project
 
 .classpath
+/bin/

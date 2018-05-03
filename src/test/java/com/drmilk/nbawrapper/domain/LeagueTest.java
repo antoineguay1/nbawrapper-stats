@@ -31,7 +31,7 @@ public class LeagueTest extends TestCase {
 	}
 
 	public void testGetValidBoxscore() throws BoxscoreNotFoundException {
-		Boxscore boxscore = League.getBoxscore(25, 12, 2016, "0021600457");
+		Boxscore boxscore = League.getBoxscore("25", "12", "2016", "0021600457");
 		Assert.assertNotNull(boxscore);
 		Assert.assertEquals("109", boxscore.getBasicGameData().getHomeTeam().getScore());
 		Assert.assertEquals("108", boxscore.getBasicGameData().getVisitingTeam().getScore());
