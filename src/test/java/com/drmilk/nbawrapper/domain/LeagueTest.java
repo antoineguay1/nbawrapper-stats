@@ -14,7 +14,7 @@ import junit.framework.TestCase;
 public class LeagueTest extends TestCase {
 
 	public void testGetValidScoreboard() throws ScoreboardNotFoundException {
-		Scoreboard league = League.getScoreboard(25, 12, 2016);
+		Scoreboard league = League.getScoreboard("25", "12", "2016");
 		Assert.assertNotNull(league);
 		List<GameDetails> gameList = league.getGames();
 		Assert.assertEquals(5, gameList.size());
@@ -31,7 +31,7 @@ public class LeagueTest extends TestCase {
 	}
 
 	public void testGetValidBoxscore() throws BoxscoreNotFoundException {
-		Boxscore boxscore = League.getBoxscore(25, 12, 2016, "0021600457");
+		Boxscore boxscore = League.getBoxscore("25", "12", "2016", "0021600457");
 		Assert.assertNotNull(boxscore);
 		Assert.assertEquals("109", boxscore.getBasicGameData().getHomeTeam().getScore());
 		Assert.assertEquals("108", boxscore.getBasicGameData().getVisitingTeam().getScore());
