@@ -80,7 +80,7 @@ System.out.println(teamMin.getFullName()); // Atlanta Hawks
 ### Using a date
 You can get the scoreboard on a certain date using the static method getScoreboard of League. For instance, to get the scoreboard on December 25th 2016, you can use this snippet of code
 ```java
-Scoreboard scoreboard = League.getScoreboard(25, 12, 2016);
+Scoreboard scoreboard = League.getScoreboard("25", "12", "2016");
 // From this scoreboard, you can access different information
 List<GameDetails> gameList = scoreboard.getGames();
 ```
@@ -88,7 +88,7 @@ List<GameDetails> gameList = scoreboard.getGames();
 ### Using a date and a game ID
 You can get the boxscore of a certain game using the static method getBoxscore of League. For instance, to get the boxscore of the game between the Cavaliers and the Warriors on December 25th 2016, you can use this snippet of code
 ```java
-Boxscore boxscore = League.getBoxscore(25, 12, 2016, "0021600457");
+Boxscore boxscore = League.getBoxscore("25", "12", "2016", "0021600457");
 System.out.println(boxscore.getBasicGameData().getHomeTeam().getScore()); // 109
 System.out.println(boxscore.getBasicGameData().getVisitingTeam().getScore()); // 108
 ```
