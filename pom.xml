@@ -4,7 +4,7 @@
 
 	<groupId>com.antoineguay</groupId>
 	<artifactId>nbawrapper</artifactId>
-	<version>0.0.8</version>
+	<version>0.0.9</version>
 	<packaging>jar</packaging>
 
 	<name>nbawrapper</name>
@@ -64,6 +64,9 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-gpg-plugin</artifactId>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
 				<version>1.5</version>
 				<executions>
 					<execution>
