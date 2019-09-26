@@ -26,8 +26,6 @@
 *.sql
 *.sqlite
 
-.idea/
-
 
 *target/**
 *.settings/**
@@ -40,3 +38,5 @@ pom.xml.releaseBackup
 
 .classpath
 /bin/
+/.idea/
+.idea/
