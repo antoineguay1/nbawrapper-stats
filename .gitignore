@@ -26,6 +26,8 @@
 *.sql
 *.sqlite
 
+.idea/
+
 
 *target/**
 *.settings/**

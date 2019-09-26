@@ -4,7 +4,7 @@
 
 	<groupId>com.antoineguay</groupId>
 	<artifactId>nbawrapper</artifactId>
-	<version>0.0.7</version>
+	<version>0.0.8</version>
 	<packaging>jar</packaging>
 
 	<name>nbawrapper</name>
@@ -123,7 +123,6 @@
 				<configuration>
 					<serverId>ossrh</serverId>
 					<nexusUrl>https://oss.sonatype.org/</nexusUrl>
-					<description>${project.version}</description>
 					<autoReleaseAfterClose>true</autoReleaseAfterClose>
 				</configuration>
 				<executions>
@@ -161,7 +160,7 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
-			<version>4.3.10.RELEASE</version>
+			<version>[4.3.18,)</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -171,12 +170,12 @@
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
-			<version>2.9.0</version>
+			<version>[2.9.10,)</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
-			<version>4.1.1</version>
+			<version>[4.3.6,)</version>
 		</dependency>
 		<dependency>
 			<groupId>info.debatty</groupId>
